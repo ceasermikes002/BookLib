@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="home-navbar">
+    <div class="logo">
+      <img height="150" src="../static/booklib logo.png" alt="Logo">
+    </div>
+
+    <div class="search-bar" >
+        <input type="search" id="form1" class="form-control" placeholder="Find book " aria-label="Search" />
+    </div>
+
+    <div class="cart">
+      <div class="cart-icon">
+        <span class="cart-item-count">9</span>
+        <i class="fa-solid fa-basket-shopping"></i>
+      </div>
+    </div>
+    <div class="profile">
+        <img src="https://qph.cf2.quoracdn.net/main-qimg-54267778c97f83c195ad7b0efb64aaa9-lq" alt="hugenerd" width="40" height="40" class="rounded-circle">
+        <p class="d-none d-sm-inline mx-1">Hey, {% if username %}{{ username }}{% else %}Guest{% endif %}</p>
+    </div>
+  </nav>
+  <div class="home-menu-links py-2">
+    <div class="container">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Books <span>/</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/wishlist">Wishlist <span>/</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: plum;" href="/cart">Cart</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  
+  
+
+
+{% endblock %}

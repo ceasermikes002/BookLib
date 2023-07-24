@@ -1,0 +1,36 @@
+-- database: c:\Users\Hp\Desktop\BookLib\instance\database.db
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM "book";
+
+CREATE TABLE new_books (
+    id INTEGER PRIMARY KEY,
+    category VARCHAR(50),
+    title VARCHAR(100),
+    authors VARCHAR(200),
+    description VARCHAR(5000),
+    cover_image VARCHAR(200),
+    category_id INTEGER,
+    FOREIGN KEY (category_id) REFERENCES Category(id)
+);
+
+INSERT INTO new_books (category, title, authors, description, cover_image, category_id)
+SELECT category, title, authors, description, cover_image, category_id
+FROM book;
+
+DELETE FROM new_books
+WHERE id NOT IN (
+    SELECT MIN(id)
+    FROM new_books
+    GROUP BY category, title, authors, description, cover_image, category_id
+);
+
+DELETE FROM book
+WHERE id NOT IN (
+    SELECT MIN(id)
+    FROM book
+    GROUP BY category, title, authors, description, cover_image, category_id
+);
+
+DROP TABLE new_books

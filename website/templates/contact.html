@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <section id="contact">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Whether you have a question, feedback, or any other inquiry, feel free to reach out to us. Fill in the form below or use the provided contact information to get in touch.</p>
+            <div class="contact-form">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+                <p><strong>Phone:</strong> +1 123 456 7890</p>
+                <p><strong>Email:</strong> info@booklib.com</p>
+            </div>
+        </div>
+
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5823244931184!2d7.497203074182149!3d6.447635424041974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a3dd22769851%3A0xeab6429484c169ed!2sOgui%20Rd%2C%20400102%2C%20Enugu!5e0!3m2!1sen!2sng!4v1686911466892!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <img class="footer-logo" src="../static/booklib logo.png" alt="Logo">
+        <div class="footer-text">
+          BookLib is an online bookstore where you can get a variety of your favorite books. Find your books here now.
+        </div>
+        
+        <p>Follow Us</p>
+        <div class="footer-social">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+      </div>
+  
+      <div class="footer-column">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="about-us.html">About Us</a></li>
+          <li class="footer-link"><a href="contact-us.html">Contact Us</a></li>
+          <li class="footer-link"><a href="login.html">Login</a></li>
+          <li class="footer-link"><a href="products.html">Products</a></li>
+          <li class="footer-link"><a href="sign-up.html">Sign Up</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-column">
+        <div class="footer-heading">Customer Area</div>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="my-account.html">My Account</a></li>
+          <li class="footer-link"><a href="orders.html">Orders</a></li>
+          <li class="footer-link"><a href="wishlist.html">Wishlist</a></li>
+          <li class="footer-link"><a href="tracking-list.html">Tracking List</a></li>
+          <li class="footer-link"><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li class="footer-link"><a href="terms-conditions.html">Terms and Conditions</a></li>
+        </ul>
+      </div>
+      
+    </div>
+  </footer>
+  
+  <hr>
+  <div class="closure">
+    <span>BookLib  -  2023 All Rights Reserved</span>
+    <span>Made with love by Mmeso</span>
+  </div>
+
+{% endblock %}

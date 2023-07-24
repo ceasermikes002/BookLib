@@ -1,0 +1,227 @@
+:root {
+    --color-primary: #97719a;
+    --color-secondary: #732678;
+    --color-tertiary: rgba(115, 38, 120, 0.25);
+  }  
+
+  .home-header{
+    background-color: var(--color-primary);
+    margin-bottom: 3rem;
+  }
+
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  /* overflow-y: scroll; */
+  background-color: #fff;
+  scrollbar-width: 1px; /* Set the width of the scrollbar */
+  padding: 20px;
+  box-sizing: border-box;
+  float: left;
+}
+
+.home-divider{ 
+    width: 2px;
+    background-color: #888;
+    height: 200vh;
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    transform: translateX(-50%);
+  
+}
+
+.sidebar h4 {
+  margin-top: 0;
+  color: var(--color-secondary);
+}
+
+.sidebar ul {
+  margin-top: 10px;
+}
+
+.sidebar .list-group-item, .sidebar .list-group {
+  border: none;
+  background-color: #efefef;
+}
+
+.category-item button{
+  /* Add your regular styles here */
+  transition: transform 0.3s ease;
+}
+
+.category-item button:hover {
+  color: #fff;
+}
+
+.sidebar .list-group .dropdown{
+  margin-top: 5rem;
+}
+
+.sidebar .list-group .dropdown p{
+  color: var(--color-secondary);
+  margin-left: 1em;
+  margin-top: 1.5em;
+}
+
+.sidebar .list-group .dropdown #dropdownUser1{
+  margin-left: 1em;
+}
+
+.sidebar .category-button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+}
+
+.sdb-search{
+    display: flex;
+    margin-bottom: 1rem;
+
+}
+
+.sdb-search .form-control {
+    border: none;
+    border-bottom: .3px solid #efefef;
+    outline: none;
+  }
+
+
+.content {
+  margin-left: 320px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    /* Initial position and width */
+    width: 300px;
+    transform: translateX(0);
+    transition: width 0.3s, transform 0.3s;
+}
+
+.content {
+    /* Adjust the width of the content based on the sidebar width */
+    flex-grow: 1;
+    transition: width 0.3s;
+}
+
+.sidebar-hidden {
+    /* Updated position and width when sidebar is hidden */
+    width: 0;
+    transform: translateX(-100%);
+}
+
+.content-full-width {
+    /* Updated width when sidebar is hidden */
+    width: 100%;
+}
+
+/* For the books display */
+.bk-dsp{
+  padding-left: 5rem;
+}
+
+#selected-category{
+  text-transform: capitalize;
+  margin: 4rem 0rem 3rem 22rem;
+}
+
+.bk-dsp .card{
+  margin-bottom: 2rem;
+}
+
+.bk-dsp .card-text:nth-child(2) {
+  color: #888;
+}
+
+/* .like{
+  background-color: transparent;
+  border: #888;
+} */
+
+
+.bk-stars{
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.star.filled {
+  color: #ffcc00;
+}
+
+.home-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.home-navbar .logo img {
+  height: 50px;
+  padding-right: 9rem;
+}
+
+.home-navbar .search-bar {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.home-navbar .search-bar input[type="search"] {
+  width: 70%;
+  padding: 5px;
+}
+
+.home-navbar .cart {
+  position: relative;
+  margin-right: 2rem;
+}
+
+.home-navbar .cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.home-navbar .cart-item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 1px 6px;
+  border-radius: 50%;
+}
+
+.home-navbar .profile {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.profile p {
+  padding-left: 5px;
+  padding-top: 1rem;
+}
+
+.home-menu-links{
+  background-color: var(--color-primary);
+
+}
+
+.home-menu-links .nav-link{
+  text-decoration: none;
+  color: #fff;
+}
