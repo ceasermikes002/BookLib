@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
+  gap: 20px;
+  padding: 20px;
+
+}
+.book-card{
+    border: 1px solid #ccc;
+}
+.book-card h5,h6,p{
+    text-align: center;
+}
+.book-image{    
+    justify-content: center;
+}
+input[type="number"] {
+    padding: 2px;
+    width: 3rem;
+    margin-right: 10px;
+}
+section {
+    display: flex;
+    flex-direction: row;
+}
+.cart-summary{
+    padding: 30px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    height: fit-content;
+}

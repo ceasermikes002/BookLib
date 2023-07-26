@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <nav class="home-navbar">
     <div class="logo">
       <img height="150" src="../static/booklib logo.png" alt="Logo">
@@ -13,16 +12,10 @@
 
     <div class="cart">
       <div class="cart-icon">
-          {% if current_user.is_authenticated and current_user.carts %}
-              <!-- Display the actual cart count -->
-              <span class="cart-item-count">{{ current_user.carts[-1].data.split('\n') | length - 1 }}</span>
-          {% else %}
-              <!-- If the user is not logged in or the cart is empty, display 0 -->
-              <span class="cart-item-count">0</span>
-          {% endif %}
-          <i class="fa-solid fa-basket-shopping"></i>
+        <span class="cart-item-count">9</span>
+        <i class="fa-solid fa-basket-shopping"></i>
       </div>
-  </div>
+    </div>
     <div class="profile">
         <img src="https://qph.cf2.quoracdn.net/main-qimg-54267778c97f83c195ad7b0efb64aaa9-lq" alt="hugenerd" width="40" height="40" class="rounded-circle">
         <p class="d-none d-sm-inline mx-1">Hey, {% if username %}{{ username }}{% else %}Guest{% endif %}</p>
@@ -40,8 +33,10 @@
         <li class="nav-item">
           <a class="nav-link" style="color: plum;" href="/cart">Cart</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: plum;" href="/checkout">Checkout</a>
+        </li>
       </ul>
     </div>
   </div>
-
-  {% endblock %}
+{% endblock %}

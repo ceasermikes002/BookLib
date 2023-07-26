@@ -12,8 +12,14 @@
 
       <div class="cart">
         <div class="cart-icon">
-          <span class="cart-item-count">3</span>
-          <i class="fa-solid fa-basket-shopping"></i>
+            {% if current_user.is_authenticated and current_user.carts %}
+                <!-- Display the actual cart count -->
+                <span class="cart-item-count">{{ current_user.carts[-1].data.split('\n') | length - 1 }}</span>
+            {% else %}
+                <!-- If the user is not logged in or the cart is empty, display 0 -->
+                <span class="cart-item-count">0</span>
+            {% endif %}
+            <i class="fa-solid fa-basket-shopping"></i>
         </div>
       </div>
       <div class="profile">
@@ -47,6 +53,7 @@
                   <input class="form-control" id="category-search" type="search" placeholder="Search">
               </span>
           </form>
+          
 
           <ul class="list-group">            
               <!-- Loop through categories and generate sidebar items -->
@@ -117,8 +124,15 @@
                           <i class="far fa-star star"></i>
                       </span>
                       <br>
-                      <a href="/cart" class="btn like"><i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart</a>
+                      <!-- <a href="/cart" class="btn like"><i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart</a> -->
+                      <!-- <button class="btn like" onclick="addToCart('{{ book.title }}', '{{ book.authors }}', '{{ book.cover_image }}')">
+                        <i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart
+                    </button> -->
+                     <!-- home.html -->
+
+                      <a class="btn like" id="addToCartButton"><i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart</a>
                       <span class="btn like"><i class="fa-solid fa-heart"></i> </span>
+                      
                   </div>
                   </div>
                 </div>
@@ -154,8 +168,7 @@
         </div>
         <div class="modal-footer">
           <!-- Add the "Add to Cart" button -->
-          <button type="button" class="btn btn-primary" id="addToCartButton">Add to Cart</button>
-          <a href="/cart" class="btn like"><i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart</a>
+          <a href="/cart" class="btn like" id="addToCartButton"><i class="fa-solid fa-basket-shopping" style="color: #fff;"></i> Add to cart</a>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
@@ -167,6 +180,6 @@
   
 
 
-
+     
 
   {% endblock %}

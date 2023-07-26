@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template, request, session
+
+from flask import Blueprint, render_template, request, session,jsonify,redirect,flash
 from flask_login import login_required, current_user
 from .models import Category, Book, User
 from . import db
+from .models import Category, Book, User, Cart
 import requests
 from flask import request, jsonify
 from sqlalchemy import or_
@@ -127,11 +129,70 @@ api_key = 'AIzaSyBJaOuBu-R6Z3coZcvV-0V1rZZmJdPTMn0'
 
 #     return all_books
 
-
+# Cart Route
 @views.route('/cart')
 def cart():
-    return render_template('cart.html')
+    # Retrieve the user's cart
+    user = User.query.get(current_user.id)
+    cart = user.carts[-1] if user.carts else None
 
+    if cart and cart.data:
+        cart_books = cart.data.split('\n')
+    else:
+        cart_books = None
+
+    return render_template('cart.html', cart_books=cart_books)
+
+
+# wishlist Route
 @views.route('/wishlist')
 def wishlist():
     return render_template('wishlist.html')
+
+# checkout Route
+@views.route('/checkout')
+def checkout():
+    return render_template('checkout.html')
+
+# Route for handling adding books to cart
+@views.route('/add_to_cart', methods=['POST'])
+@login_required
+def add_to_cart():
+    if request.method == 'POST':
+        book_data = request.get_json()
+        book_title = book_data.get('title')
+        book_authors = book_data.get('authors')
+        book_cover = book_data.get('cover')
+        book_price = book_data.get('price')
+
+        # Get the current user's cart or create a new one if it doesn't exist
+        user = User.query.get(current_user.id)
+        cart = user.carts[-1] if user.carts else None
+
+        if not cart:
+            # Create a new cart for the user if it doesn't exist
+            cart = Cart(user_id=current_user.id)
+            db.session.add(cart)
+
+        # Append the book information to the cart's data
+        cart.data = f"{cart.data}\nTitle: {book_title}, Authors: {book_authors}, Cover: {book_cover}, Price: {book_price}"
+        db.session.commit()
+
+        flash('Book added to cart successfully', category='success')
+
+    return jsonify({'message': 'Book added to cart successfully'})
+
+
+# item count route
+@views.route('/cart_item_count')
+def cart_item_count():
+    if current_user.is_authenticated:
+        user = User.query.get(current_user.id)
+        cart = user.carts[-1] if user.carts else None
+        if cart:
+            item_count = len(cart.books)
+        else:
+            item_count = 0
+    else:
+        item_count = 0
+    return jsonify({'count': item_count})
